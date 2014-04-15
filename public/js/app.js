@@ -1,0 +1,1 @@
+angular.module('inCollabApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'UsersCtrl', 'UsersService', 'ProjectsCtrl', 'ProjectsService', 'StatsCtrl', 'StatsService', 'CalendarCtrl', 'CalendarService']);

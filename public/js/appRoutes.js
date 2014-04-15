@@ -1,0 +1,32 @@
+angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
+	$routeProvider
+
+		.when('/', {
+			templateUrl: 'views/home.html',
+			controller: 'MainController'
+		})
+
+		.when('/projects', {
+			templateUrl: 'views/projects.html',
+			controller: 'ProjectsController'
+		})
+
+		.when('/users', {
+			templateUrl: 'views/users.html',
+			controller: 'UsersController'	
+		})
+		
+		.when('/stats', {
+			templateUrl: 'views/stats.html',
+			controller: 'StatsController'
+		})
+		
+		.when('/calendar', {
+			templateUrl: 'views/calendar.html',
+			controller: 'CalendarController'
+		});
+
+	$locationProvider.html5Mode(true);
+
+}]);
