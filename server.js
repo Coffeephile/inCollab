@@ -3,22 +3,69 @@ var express = require('express');
 var app     = express();
 
 var mongoose= require('mongoose');
-var db = require('./config/db');
+var database = require('./config/db');
 
-var port = process.env.PORT || 80; 
-mongoose.connect(db.url);
+var port = process.env.PORT || 3333; 
+
+global.db = mongoose.createConnection(database.url);
 
 app.configure(function() {
-	app.use(express.static(__dirname + '/public')); 	// set the static files location /public/img will be /img for users
-	app.use(express.logger('dev')); 					// log every request to the console
-	app.use(express.bodyParser()); 						// pull information from html in POST
-	app.use(express.methodOverride()); 					// simulate DELETE and PUT
+
+	app.use(express.static(__dirname + '/public'));
+	app.use(express.logger('dev'));
+	app.use(express.bodyParser());
+	app.use(express.methodOverride());
 });
 
-// routes ==================================================
-require('./app/routes')(app); //pass app to routees
+// models =================================================
+var UserModel = require('./app/models/user');
+var ProjectModel = require('./app/models/project');	
+
+// server routes ==========================================
+app.get('/api/test', function(req, res) {
+
+	res.json({ message: 'REST working' });	
+});
+
+app.get('/api/users', function(req, res) {
+
+	UserModel.find(function(err, users) {
+
+		if (err)
+			res.send(err);
+
+		res.json(users);
+	});
+});
+
+// frontend routes ====================================
+app.get('*', function(req, res) {
+
+	res.sendfile('./public/index.html');
+});
 
 // start app ===============================================
 app.listen(port);	
 console.log('Starting InCollab Node.js app on port ' + port); 		
-exports = module.exports = app; 			
+exports = module.exports = app; 	
+
+// !test data ===============================================
+var testUser1 = new UserModel({
+  firstname: 'Adam'
+, lastname: 'Teściński'
+});
+
+testUser1.save(function(err, testUser1) {
+  if (err) return console.error(err);
+  console.dir(testUser1);
+});	
+
+var testProject1 = new ProjectModel({
+  name: 'Kubek stalowy'
+, completion: 'None'
+});
+
+testProject1.save(function(err, testProject1) {
+  if (err) return console.error(err);
+  console.dir(testProject1);
+});	

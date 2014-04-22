@@ -1,14 +1,18 @@
-// load the things we need
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
 
-var projectSchema = mongoose.Schema({
+var mongoose = require('mongoose')
+, Schema = mongoose.Schema
+, ObjectId = Schema.ObjectId;
 
-    local            : {
-        id        : String
-    }
+var ProjectSchema = mongoose.Schema({
+
+    name: { type: String },
+    completion: { type: String }
 });
 
 // methods ======================
+ProjectSchema.methods.example = function(name) {
+    return 0;
+};
 
-module.exports = mongoose.model('Project', projectSchema);
+// export ======================
+module.exports = db.model('Project', ProjectSchema);
