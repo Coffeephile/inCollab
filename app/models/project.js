@@ -6,6 +6,8 @@ var mongoose = require('mongoose')
 var ProjectSchema = mongoose.Schema({
 
     name: { type: String },
+    ident: { type: String },
+    users: { type: String },
     completion: { type: String }
 });
 

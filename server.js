@@ -69,15 +69,29 @@ UserModel.remove(function(err, p){
     }
 });
 
-var testUser1 = new UserModel({
-  firstname: 'Adam'
-, lastname: 'Teściński'
-});
-
+var testUser1 = new UserModel({firstname: "Dariusz", lastname: "Kwiatkowski", position: "Programista" });
 testUser1.save(function(err, testUser1) {
   if (err) return console.error(err);
   console.dir(testUser1);
 });	
+
+var testUser2 = new UserModel({firstname: "Marian", lastname: "Teściński", position: "Metalurg" });
+testUser2.save(function(err, testUser2) {
+  if (err) return console.error(err);
+  console.dir(testUser2);
+});
+
+var testUser3 = new UserModel({firstname: "Hieronim", lastname: "Bojczy", position: "Inżynier produkcji" });
+testUser3.save(function(err, testUser3) {
+  if (err) return console.error(err);
+  console.dir(testUser3);
+});
+
+var testUser4 = new UserModel({firstname: "Tadeusz", lastname: "Nowak", position: "Specjalista CAD" });
+testUser4.save(function(err, testUser4) {
+  if (err) return console.error(err);
+  console.dir(testUser4);
+});
 
 ProjectModel.remove(function(err, p){
     if(err){ 
@@ -88,8 +102,9 @@ ProjectModel.remove(function(err, p){
 });
 
 var testProject1 = new ProjectModel({
-  name: 'Kubek stalowy'
-, completion: 'None'
+  name: 'Stalowy Kubek'
+, ident: 'sk01'
+, completion: '5'
 });
 
 testProject1.save(function(err, testProject1) {

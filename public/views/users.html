@@ -2,6 +2,38 @@
 	<h1>Kontakt z pracownikami</h1>
 
 	<p>{{ tagline }}</p>
+	<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Wszyscy</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='user in currentUsersList'>
+      <td>{{user.firstname}} {{user.lastname}} - {{user.position}}</td>
+      <td>
+      	<div class="btn-group">
+  		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+    		Projekt - Stalowy Kubek <span class="label label-success">Ident: sk01</span> <span class="caret"></span>
+  			</button>
+  			<ul class="dropdown-menu">
+    		...
+  			</ul>
+		</div>
+
+      	<button role='button' class='btn' ng-click="AddToProject(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-plus-square"></i></button>
+      	<button role='button' class='btn disabled' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-minus-square"></i></button>
+      	<button role='button' class='btn' ng-click="Contact(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-comment"></i></button>
+      	<button role='button' class='btn' ng-click="Contact(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-info-circle"></i></button>
+      	</td>
+    </tr>
+  </tbody>
+</table>
 	
 	<br/>
 	<div class="alert alert-warning">Uwaga! Moduł w trakcie tworzenia.</div>
