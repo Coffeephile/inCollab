@@ -38,6 +38,17 @@ app.get('/api/users', function(req, res) {
 	});
 });
 
+app.get('/api/projects', function(req, res) {
+
+	ProjectModel.find(function(err, projects) {
+
+		if (err)
+			res.send(err);
+
+		res.json(projects);
+	});
+});
+
 // frontend routes ====================================
 app.get('*', function(req, res) {
 
@@ -49,7 +60,15 @@ app.listen(port);
 console.log('Starting InCollab Node.js app on port ' + port); 		
 exports = module.exports = app; 	
 
-// !test data ===============================================
+// !test data setup ===============================================
+UserModel.remove(function(err, p){
+    if(err){ 
+        throw err;
+    } else{
+        console.log('No Of Documents deleted:' + p);
+    }
+});
+
 var testUser1 = new UserModel({
   firstname: 'Adam'
 , lastname: 'Teściński'
@@ -59,6 +78,14 @@ testUser1.save(function(err, testUser1) {
   if (err) return console.error(err);
   console.dir(testUser1);
 });	
+
+ProjectModel.remove(function(err, p){
+    if(err){ 
+        throw err;
+    } else{
+        console.log('No Of Documents deleted:' + p);
+    }
+});
 
 var testProject1 = new ProjectModel({
   name: 'Kubek stalowy'
