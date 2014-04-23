@@ -67,12 +67,14 @@ app.post('/api/projects', function(req, res) {
 
 app.post('/api/users', function(req, res) {
 
-  var user = req;
+  var user = req.body;
+  var list = [];
+  list.push(user);
 
-  console.log(req);
+  console.log(list);
 
-  ProjectModel.update({'items.ident': user.ident}, 
-    { $set: {'items.$.userslist': user.userslist}}, 
+  ProjectModel.update({ident: 'sk01'}, 
+    { $addToSet: { userslist: user}}, 
 
     function(err) {
 
