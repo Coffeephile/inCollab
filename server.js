@@ -49,6 +49,38 @@ app.get('/api/projects', function(req, res) {
 	});
 });
 
+app.post('/api/projects', function(req, res) {
+
+  var user = req;
+
+  console.log(req);
+
+  ProjectModel.update({'items.ident': user.ident}, 
+    { $set: {'items.$.userslist': user.userslist}}, 
+
+    function(err) {
+
+    if (err)
+      res.send(err);
+  });
+});
+
+app.post('/api/users', function(req, res) {
+
+  var user = req;
+
+  console.log(req);
+
+  ProjectModel.update({'items.ident': user.ident}, 
+    { $set: {'items.$.userslist': user.userslist}}, 
+
+    function(err) {
+
+    if (err)
+      res.send(err);
+  });
+});
+
 // frontend routes ====================================
 app.get('*', function(req, res) {
 
@@ -94,15 +126,16 @@ testUser4.save(function(err, testUser4) {
 });
 
 ProjectModel.remove(function(err, p){
-    if(err){ 
-        throw err;
-    } else{
-        console.log('No Of Documents deleted:' + p);
-    }
+  if(err){ 
+      throw err;
+  } else{
+      console.log('No Of Documents deleted:' + p);
+  }
 });
 
 var testProject1 = new ProjectModel({
   name: 'Stalowy Kubek'
+, users: ''
 , ident: 'sk01'
 , completion: '5'
 });

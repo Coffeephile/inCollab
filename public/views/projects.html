@@ -1,13 +1,13 @@
 <div class="jumbotron text-center">
-	<h1>Praca nad projektami</h1>
+	<h1>Informacje o pracy nad projektami</h1>
 
 	<p>{{ tagline }}</p>
 	
 	<div class="panel panel-default">
 		<div class="panel-heading">
-		Projekt - Stalowy Kubek 
-		<span class="badge">Członków: 0</span>
-		<span class="label label-success">Ident: pc01</span>
+		Projekt - {{projectInfo.name}} 
+		<span class="badge">Członków: {{usersNumber}} </span>
+		<span class="label label-success">Ident: {{projectInfo.ident}} </span>
 		</div>
 		
 		<div class="panel-body">
@@ -15,7 +15,7 @@
 			<p/>
 			<div class="progress">
 				<div class="progress-bar progress-bar-success" style="width: 5%">
-				<span class="sr-only">5% Complete</span>
+				<span class="sr-only">{{projectInfo.completion}}% Complete</span>
 				</div>
 			</div>
 			<div class="btn-group">

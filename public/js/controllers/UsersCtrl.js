@@ -1,14 +1,36 @@
-angular.module('UsersCtrl', []).controller('UsersController', function($scope) {
+angular.module('UsersCtrl', []).controller('UsersController', function($http, $scope) {
 
 	$scope.tagline = 'Wybierz użytkowanika do kontaktu:';	
 
-	$scope.currentUsersList = [
-		{firstname: "Dariusz", lastname: "Kwiatkowski", position: "Programista" }, 
-		{firstname: "Marian", lastname: "Teściński", position: "Metalurg" }, 
-		{firstname: "Hieronim", lastname: "Bojczy", position: "Inżynier produkcji" },
-		{firstname: "Tadeusz", lastname: "Nowak", position: "Specjalista CAD" }
-	];
+	$scope.currentUsersList = [];
 
-	$scope.currentProjectsList = [{name: "Stalowy Kubek", ident: "sk01"}];
+	$http.get('/api/users')
+                .success(function(data) {
+                        $scope.currentUsersList = data;
+                })
+                .error(function(data) {
+                        console.log('Error: ' + data);
+                });
+
+	$scope.currentProjectsList = [];
+
+	$http.get('/api/projects')
+                .success(function(data) {
+                        $scope.currentProjectsList = data;
+                })
+                .error(function(data) {
+                        console.log('Error: ' + data);
+                });
+
+        $scope.AddUserToProject = function(user){
+
+                $http.post('/api/users', user)
+                .success(function() {
+                        console.log('Success')
+                })
+                .error(function() {
+                        console.log('Error');
+                });;   
+        }
 
 });

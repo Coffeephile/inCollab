@@ -5,6 +5,10 @@ angular.module('ProjectsService', []).factory('Projects', ['$http', function($ht
 			return $http.get('/api/projects');
 		},
 
+		post : function(userData) {
+			return $http.post('/api/projects', userData);
+		},
+
 		create : function(projectData) {
 			return $http.post('/api/projects', projectData);
 		},

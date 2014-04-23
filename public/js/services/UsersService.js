@@ -5,6 +5,10 @@ return {
 			return $http.get('/api/users');
 		},
 
+		post : function(userData) {
+			return $http.post('/api/users', userData);
+		},
+
 		create : function(userData) {
 			return $http.post('/api/users', userData);
 		},

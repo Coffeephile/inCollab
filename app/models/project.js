@@ -7,7 +7,7 @@ var ProjectSchema = mongoose.Schema({
 
     name: { type: String },
     ident: { type: String },
-    users: { type: String },
+    userslist: { type : Array , "default" : [] },
     completion: { type: String }
 });
 
