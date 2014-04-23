@@ -1,3 +1,4 @@
+
 // modules =================================================
 var express = require('express');
 var app     = express();
@@ -5,13 +6,13 @@ var app     = express();
 var mongoose= require('mongoose');
 var database = require('./config/db');
 
-var port = process.env.PORT || 3333; 
+var port = process.env.PORT || 8080; 
 
 global.db = mongoose.createConnection(database.url);
 
 app.configure(function() {
 
-	app.use(express.static(__dirname + '/public'));
+	app.use(express.static('./public'));
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
