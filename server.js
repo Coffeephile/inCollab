@@ -74,6 +74,19 @@ app.post('/api/users', function(req, res) {
 
   console.log(list);
 
+  UserModel.update({lastname: user.lastname}, 
+    { firstname: user.firstname,
+      lastname: user.lastname,
+      position: user.position,
+      inProject: "1"
+    }, 
+
+    function(err) {
+
+    if (err)
+      res.send(err);
+  });
+
   ProjectModel.update({ident: 'sk01'}, 
     { $addToSet: { userslist: user}}, 
 
@@ -104,25 +117,25 @@ UserModel.remove(function(err, p){
     }
 });
 
-var testUser1 = new UserModel({firstname: "Dariusz", lastname: "Kwiatkowski", position: "Programista" });
+var testUser1 = new UserModel({firstname: "Dariusz", lastname: "Kwiatkowski", position: "Programista", inProject: "0" });
 testUser1.save(function(err, testUser1) {
   if (err) return console.error(err);
   console.dir(testUser1);
 });	
 
-var testUser2 = new UserModel({firstname: "Marian", lastname: "Teściński", position: "Metalurg" });
+var testUser2 = new UserModel({firstname: "Marian", lastname: "Teściński", position: "Metalurg", inProject: "0" });
 testUser2.save(function(err, testUser2) {
   if (err) return console.error(err);
   console.dir(testUser2);
 });
 
-var testUser3 = new UserModel({firstname: "Hieronim", lastname: "Bojczy", position: "Inżynier produkcji" });
+var testUser3 = new UserModel({firstname: "Hieronim", lastname: "Bojczy", position: "Inżynier produkcji", inProject: "0" });
 testUser3.save(function(err, testUser3) {
   if (err) return console.error(err);
   console.dir(testUser3);
 });
 
-var testUser4 = new UserModel({firstname: "Tadeusz", lastname: "Nowak", position: "Specjalista CAD" });
+var testUser4 = new UserModel({firstname: "Tadeusz", lastname: "Nowak", position: "Specjalista CAD", inProject: "0" });
 testUser4.save(function(err, testUser4) {
   if (err) return console.error(err);
   console.dir(testUser4);

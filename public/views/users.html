@@ -1,5 +1,5 @@
 <div class="jumbotron text-center">
-	<h1>Zarządzanie pracownikami</h1>
+	<h2>Zarządzanie pracownikami</h2>
 
 	<p>{{ tagline }}</p>
 	<table class='table table-striped'>
@@ -11,8 +11,8 @@
   </thead>
   <tbody>
     <tr ng-repeat='user in currentUsersList'>
-      <td>{{ user.firstname }} {{ user.lastname }} - {{ user.position }}</td>
-      <td>
+      <td>{{ user.firstname }} {{ user.lastname }} - {{ user.position }} - [Projektów: {{ user.inProject }}]</td>
+      <td ng-switch="user.inProject">
       	<div class="btn-group">
   		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
     		Projekt - Stalowy Kubek <span class="label label-success">Ident: sk01</span> <span class="caret"></span>
@@ -22,9 +22,9 @@
   			</ul>
 		</div>
 
-      	<button role='button' class='btn' ng-click="AddUserToProject(user)" data-toggle="modal" 
+      	<button ng-switch-when="0" role='button' class='btn' ng-click="AddUserToProject(user)" data-toggle="modal" 
       			  href="#editModal"><i class="fa fa-plus-square"></i></button>
-      	<button role='button' class='btn disabled' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      	<button ng-switch-when="1" role='button' class='btn' ng-click="DeleteFromProject(user)" data-toggle="modal" 
       			  href="#editModal"><i class="fa fa-minus-square"></i></button>
       	<button role='button' class='btn' ng-click="Contact(user)" data-toggle="modal" 
       			  href="#editModal"><i class="fa fa-comment"></i></button>

@@ -7,7 +7,8 @@ var UserSchema = new Schema({
  
     firstname: { type: String },
     lastname: { type: String },
-    position: { type: String } 
+    position: { type: String },
+    inProject: { type: String } 
 });
 
 // methods ======================

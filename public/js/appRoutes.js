@@ -26,6 +26,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/users.html',
 			controller: 'UsersController'	
 		})
+
+		.when('/properties', {
+			templateUrl: 'views/properties.html',
+			controller: 'ProjectsController'	
+		})
 		
 		.when('/stats', {
 			templateUrl: 'views/stats.html',

@@ -1,0 +1,85 @@
+<div class="jumbotron text-center">
+	<h3>Dane projektu: Stalowy kubek</h3>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Przypisani pracownicy:</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='user in usersList'>
+      <td>{{ user.firstname }} {{ user.lastname }} - {{ user.position }}  </td>
+      <td>
+      	<button role='button' class='btn' ng-click="SendMessage(user)" data-toggle="modal" 
+      			  href="#editModal">Wyślij email <i class="fa fa-envelope"></i> </button>
+      	</td>
+    </tr>
+  </tbody>
+</table>
+<button role='button' class='btn pull-right' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-users"></i> Utwórz grupę projektową</button>
+
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Dostępne zadania:</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='task in projectTasks'>
+      <td>{{ task.taskId }} -- {{ task.taskStatus }} -- {{ task.desc }}  </td>
+      <td ng-switch="task.taskStatus">  
+      <button ng-switch-when="Nierozpoczęta" role='button' class='btn' ng-click="AddUserToProject(user)" data-toggle="modal" 
+      			  href="#editModal">Rozpocznij <i class="fa fa-plus-square"></i></button>
+      <button ng-switch-when="W trakcie" role='button' class='btn' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal">Zamknij <i class="fa fa-minus-square"></i></button>
+      <button ng-switch-when="W trakcie" role='button' class='btn' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal">Dodaj notatkę <i class="fa fa-pencil-square-o"></i></button>
+      			  </td>
+    </tr>
+  </tbody>
+</table>
+<button role='button' class='btn pull-right' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal">Dodaj Zadanie <i class="fa fa-magic"></i></button>
+
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Fazy projektu:</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='phase in projectPhases'>
+      <td>{{ phase.name }} - {{ phase.state }}  </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Dane i notatki:</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='note in projectNotes'>
+      <td>{{ note.type }} - {{ note.name }}  </td>
+      <td>
+      	<button role='button' class='btn' ng-click="AddUserToProject(user)" data-toggle="modal" 
+      			  href="#editModal">Pobierz <i class="fa fa-download"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button role='button' class='btn pull-right' ng-click="DeleteFromProject(user)" data-toggle="modal" 
+      			  href="#editModal"><i class="fa fa-clipboard"></i> Dodaj Dokument </button>
+	
+</div>

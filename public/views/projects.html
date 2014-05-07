@@ -1,5 +1,5 @@
 <div class="jumbotron text-center">
-	<h1>Informacje o pracy nad projektami</h1>
+	<h2>Informacje o pracy nad projektami</h2>
 
 	<p>{{ tagline }}</p>
 	
@@ -19,10 +19,10 @@
 				</div>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default disabled"><i class="fa fa-folder"></i> Szczegóły</button>
-				<button type="button" class="btn btn-default disabled"><i class="fa fa-check-square-o"></i> Dołącz</button>
-				<button type="button" class="btn btn-default disabled"><i class="fa fa-times-circle"></i> Opuść</button>
-				<button type="button" class="btn btn-default disabled"><i class="fa fa-eye"></i> Obserwuj</button>
+				<a href="/properties"><button type="button" class="btn btn-default"><i class="fa fa-folder"></i> Szczegóły</button></a>
+				<button type="button" ng-click="subscribeProject()" class="btn btn-default"><i class="fa fa-check-square-o"></i> Dołącz</button>
+				<button type="button" ng-click="unsubscribeProject()" class="btn btn-default"><i class="fa fa-times-circle"></i> Opuść</button>
+				<button type="button" ng-click="watchProject()" class="btn btn-default"><i class="fa fa-eye"></i> Obserwuj</button>
 			</div>
 		</div>
 	</div>
