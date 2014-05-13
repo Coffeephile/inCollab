@@ -7,7 +7,6 @@
 		"angular": "latest",
 		"angular-route": "latest",
 		"fontawesome": "latest",
-		"d3": "latest",
-		"gantt": "latest"
+		"angular-gantt": "latest"
 	}
 }

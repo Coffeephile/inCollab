@@ -1,6 +1,54 @@
 <div class="jumbotron text-center">
 	<h2>Statystyki i wykresy</h2>
-	
+
+	<br/>
+	<h3>Projekt - Stalowy Kubek</h3> 
+		<span class="label label-success">Ident: SK01 </span>
+		<br/>
+		<hr/>
+	    <form role="form" class="form-inline">
+        <div class="form-group">
+            <span class="help-block">Akcje</span>
+            <div class="btn-group">
+                <button class="btn btn-default" ng-click="addSamples()">Przeładuj</button>
+                <button class="btn btn-default" ng-click="removeSamples()">Usuń wszystko</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="help-block">Skala</span>
+            <select class="form-control" style="width: 100px;" ng-model="scale" ng-options="s for s in ['hour', 'day', 'week', 'month']"></select>
+        </div>
+        <div class="form-group text-center">
+            <span class="help-block">Dodatkowe opcje</span>
+            <div class="btn-group">
+                <button ng-show="showWeekends" class="btn btn-default" ng-click="showWeekends = false">Schowaj weekendy</button>
+                <button ng-show="showWeekends == false" class="btn btn-default" ng-click="showWeekends = true">Pokaż weekendy</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <gantt first-day-of-week="1"
+           load-data="loadData = fn"
+           remove-data="removeData = fn"
+           clear-data="clearData = fn"
+           sort-mode="mode"
+           view-scale="scale"
+           column-width="scale === 'month' && 20 || (scale === 'week' && 10 || 4)"
+           column-sub-scale="scale === 'week' && 7 || 6"
+           work-hours="[8,9,10,11,12,13,14,15]"
+           show-non-work-hours="showNonWorkHours"
+           weekend-days="[0,6]"
+           show-weekends="showWeekends"
+           max-height="maxHeight"
+           on-gantt-ready="addSamples()"
+           on-row-added="rowEvent(event)"
+           on-row-clicked="rowEvent(event)"
+           on-row-updated="rowEvent(event)"
+           on-scroll="scrollEvent(event)"
+           on-task-clicked="taskEvent(event)"
+           on-task-updated="taskEvent(event)">
+     </gantt>
+
 	<br/>
 	<div class="alert alert-warning">Uwaga! Moduł w trakcie tworzenia.</div>
 </div>
