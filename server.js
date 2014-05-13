@@ -109,7 +109,7 @@ console.log('Starting InCollab Node.js app on port ' + port);
 exports = module.exports = app; 	
 
 // !test data setup ===============================================
-/*UserModel.remove(function(err, p){
+UserModel.remove(function(err, p){
     if(err){ 
         throw err;
     } else{
@@ -159,4 +159,4 @@ var testProject1 = new ProjectModel({
 testProject1.save(function(err, testProject1) {
   if (err) return console.error(err);
   console.dir(testProject1);
-});	*/
+});
