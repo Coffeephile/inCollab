@@ -6,7 +6,7 @@
              ng-show="gantt.columns.length > 0">
             <div class="gantt-labels-head-row"
                  ng-style="{'margin-top': ((gantt.getActiveHeadersCount()-1)*2)+'em'}">
-                <span>Description</span>
+                <span>Zadania</span>
             </div>
         </div>
         <div class="gantt-labels-body"
@@ -46,7 +46,7 @@
             <div class="gantt-head-row" ng-if="gantt.headers.day !== undefined">
                 <span ng-style="{'width': c.width+'em', 'left': c.left+'em'}"
                       ng-repeat="c in gantt.headers.day | ganttColumnLimit:scroll_start:scroll_width track by $index">
-                    {{ viewScale === 'hour' && (c.date | date:'dd EEEE') || (c.date | date:'dd') }}
+                    {{ viewScale === 'godzina' && (c.date | date:'dd EEEE') || (c.date | date:'dd') }}
                 </span>
             </div>
             <div class="gantt-head-row" ng-if="gantt.headers.hour !== undefined">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="gantt-body-foreground">
-                <div ng-class="(viewScale === 'hour' && !c.isWorkHour && 'gantt-foreground-col-nonworkhour' || (c.isWeekend && 'gantt-foreground-col-weekend' || 'gantt-foreground-col'))"
+                <div ng-class="(viewScale === 'godzina' && !c.isWorkHour && 'gantt-foreground-col-nonworkhour' || (c.isWeekend && 'gantt-foreground-col-weekend' || 'gantt-foreground-col'))"
                      ng-style="{'width': c.width+'em', 'left': c.left+'em'}"
                      ng-repeat="c in gantt.columns | ganttColumnLimit:scroll_start:scroll_width track by $index">
                 </div>
