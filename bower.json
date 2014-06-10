@@ -7,6 +7,8 @@
 		"angular": "latest",
 		"angular-route": "latest",
 		"fontawesome": "latest",
-		"angular-gantt": "latest"
+		"angular-gantt": "latest",
+		"fullcalendar": "~1.x",
+		"jquery-ui": "~1.10.3"
 	}
 }
